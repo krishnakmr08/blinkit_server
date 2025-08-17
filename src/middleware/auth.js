@@ -6,7 +6,8 @@ export const verifyToken = async (req, reply) => {
     }
     const token = authHeader.split(" ")[1];
     const decoded = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
-    req.user = decoded;
+     req.user = decoded;
+     return true
   } catch (error) {
     return reply.status(403).send({ message: "Invalid or expired token" });
   }

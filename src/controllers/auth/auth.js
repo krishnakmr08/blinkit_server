@@ -53,12 +53,13 @@ export const loginCustomer = async (req, reply) => {
 export const loginDeliveryPartner = async (req, reply) => {
   try {
     const { email, password } = req.body;
+
     const deliveryPartner = await DeliveryPartner.findOne({ email });
 
     if (!deliveryPartner) {
       return reply.status(404).send({ message: "Delivery partner not found" });
     }
-    const isMatch = password === DeliveryPartner.password;
+    const isMatch = password === deliveryPartner.password;
 
     if (!isMatch) {
       return reply.status(400).send({ message: "Invalid Credentials" });
@@ -103,7 +104,7 @@ export const refreshToken = async (req, reply) => {
 
     const { accessToken, refreshToken: newRefreshToken } = refreshToken(user);
 
-    reply.send({
+     return reply.send({
       message: " Token Refreshed",
       accessToken,
       refreshToken: newRefreshToken,
@@ -131,7 +132,7 @@ export const fetchUser = async (req, reply) => {
       return reply.status(404).send({ message: "user not found" });
     }
 
-    reply.send({
+     return reply.send({
       message: "User fetched successfully",
       user,
     });

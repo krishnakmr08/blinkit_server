@@ -14,7 +14,7 @@ const userSchema = new mongoose.Schema({
 
 const customerSchema = new mongoose.Schema({
   ...userSchema.obj,
-  phoneNumber: { type: Number, required: true, unique: true },
+  phone: { type: Number, required: true, unique: true },
   role: { type: String, enum: ["Customer"], default: "Customer" },
   liveLocation: {
     latitude: { type: Number },

@@ -1,7 +1,7 @@
 {
-  "name": "blinkit-server",
+  "name": "blinkit",
   "version": "1.0.0",
-  "description": "",
+  "description": "API backend for a full-stack Quick Commerce app supporting rapid product delivery, JWT-based authentication, admin dashboard, and WebSocket communication",
   "main": "app.js",
   "scripts": {
     "start": "nodemon app.js",

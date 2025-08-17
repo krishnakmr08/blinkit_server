@@ -1,10 +1,14 @@
 import Product from "../../models/product.js";
 
 export const getProductsByCategoryId = async (req, reply) => {
-  const { categoryID } = req.params;
+  const { categoryId } = req.params;
 
+   if (!categoryId) {
+    return reply.status(400).send({ message: "Category Id is required" });
+  }
+ 
   try {
-    const products = await Product.find({ category: categoryID })
+    const products = await Product.find({ category: categoryId })
       .select("-category")
       .exec();
 

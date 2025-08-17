@@ -17,12 +17,13 @@ async function seedDatabase() {
     }, {});
 
     const productWithCategoryIds = products.map((product) => ({
+      
       ...product,
       category: categoryMap[product.category],
     }));
-
+       console.log(productWithCategoryIds)
     await Product.insertMany(productWithCategoryIds);
-
+      
     console.log("Database seeded successfully ☑️");
   } catch (error) {
     console.error("Error seeding database", error);
